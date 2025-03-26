@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Contact Form</title>
   <style>
     body {
@@ -11,7 +11,7 @@
       background-color: #f9f9f9;
     }
     form {
-      max-width: 500px;
+      max-width: 600px;
       padding: 20px;
       background-color: #fff;
       border-radius: 8px;
@@ -31,6 +31,14 @@
       font-size: 1rem;
       border: 1px solid #ccc;
       border-radius: 4px;
+    }
+    .inline-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .inline-group input {
+      width: auto;
     }
     button {
       padding: 10px 15px;
@@ -54,45 +62,63 @@
 
   <h1>Contact Us</h1>
   <form action="process-form.js" method="post">
+    <!-- Name -->
     <div>
       <label for="name">Full Name:</label>
       <input id="name" type="text" name="name" required />
     </div>
 
+    <!-- Email -->
     <div>
       <label for="email">Email:</label>
       <input id="email" type="email" name="email" required />
     </div>
 
+    <!-- Drop-down -->
     <div>
-      <label for="reason">Reason for Contact:</label>
-      <select id="reason" name="reason" required>
+      <label for="referral">How did you hear about us?</label>
+      <select id="referral" name="referral" required>
         <option value="">-- Please choose an option --</option>
-        <option value="support">Support</option>
-        <option value="feedback">Feedback</option>
-        <option value="general">General Inquiry</option>
+        <option value="search">Search Engine</option>
+        <option value="friend">Friend or Family</option>
+        <option value="social">Social Media</option>
+        <option value="other">Other</option>
       </select>
     </div>
 
+    <!-- Radio Buttons -->
     <div>
-      <label>Preferred Contact Method:</label>
-      <input type="radio" id="contact-email" name="contact-method" value="email" checked />
-      <label for="contact-email">Email</label>
-      <input type="radio" id="contact-phone" name="contact-method" value="phone" />
-      <label for="contact-phone">Phone</label>
+      <label>Are you a current customer?</label>
+      <div class="inline-group">
+        <input type="radio" id="customer-yes" name="current-customer" value="yes" required />
+        <label for="customer-yes">Yes</label>
+        <input type="radio" id="customer-no" name="current-customer" value="no" />
+        <label for="customer-no">No</label>
+      </div>
     </div>
 
+    <!-- Checkboxes -->
+    <div>
+      <label>What services are you interested in?</label>
+      <div class="inline-group">
+        <input type="checkbox" id="web" name="services" value="web-design" />
+        <label for="web">Web Design</label>
+
+        <input type="checkbox" id="seo" name="services" value="seo" />
+        <label for="seo">SEO</label>
+
+        <input type="checkbox" id="marketing" name="services" value="marketing" />
+        <label for="marketing">Digital Marketing</label>
+      </div>
+    </div>
+
+    <!-- Message -->
     <div>
       <label for="message">Your Message:</label>
-      <textarea
-        id="message"
-        name="message"
-        rows="5"
-        maxlength="500"
-        required
-      ></textarea>
+      <textarea id="message" name="message" rows="5" maxlength="500" required></textarea>
     </div>
 
+    <!-- Buttons -->
     <button type="submit">Submit</button>
     <button type="reset">Reset</button>
   </form>
